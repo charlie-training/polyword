@@ -7,18 +7,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
 
-// TODO
-// 
-
+// defines each Square rendered with a letter within
 function Square({ value, onSquareClick }) {
   return (
     <button className="letter" onClick={onSquareClick}>
-      {" "}
-      {value}{" "}
+      {value}
     </button>
   );
 }
 
+// function for randomising letters before passing to components
 function randomiser(letters) {
   for (let i = letters.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -27,41 +25,49 @@ function randomiser(letters) {
   return letters;
 }
 
+// first pass of letters coming in through the randomiser
 const initialLetters = randomiser([...uniqueLetters]);
 
 function Board() {
-  const initialState = "";
+  const initialState = ""; // empty State of guesses, feels more readable this way idk
   const [currentGuess, setCurrentGuess] = useState(initialState);
   const [currentScore, setCurrentScore] = useState(0);
   const [letters, setRandomLetters] = useState(initialLetters);
   const [prevGuess, setPrevGuess] = useState([]);
 
+  // deletes the last guess of the array currentGuess
   const deleteGuess = () => {
     setCurrentGuess(currentGuess.slice(0, -1));
   };
 
+  // randomises the letters, defined here so it can be passed into the arrow function below
   const randomLetters = () => {
     setRandomLetters(randomiser([...letters]));
   };
 
+  // contains the logic for a user's guess
   const makeGuess = () => {
+    // if it's in the valid list and not in the previous guesses
     if (currentGuess in validWords && !prevGuess.includes(currentGuess)) {
       setCurrentScore(currentScore + validWords[currentGuess]);
       prevGuess.push(currentGuess);
       toast.success( "Correct! +" + validWords[currentGuess] + " points" , {position:toast.POSITION.TOP_CENTER})
+      // pangram is the target word with all the unique letters in
     } else if (currentGuess == pangram) {
       setCurrentScore(currentScore + 25);
       prevGuess.push(currentGuess);
       toast.success( "Pangram! +25 points" , {position:toast.POSITION.TOP_CENTER})
+      // if it's not in the list at all
     } else if (!(currentGuess in validWords)) {
       toast.info("Not in word list" , {position : toast.POSITION.TOP_CENTER})
     }
-
     setCurrentGuess(initialState);
   };
 
+  // here for readability on exactly what the pangram is and where it comes from
   const pangram = targetWord;
 
+  // this is a bit of a state (get it), but you can see the map function for letters and the buttons and their functions attached below
   return (
     <div className="moreButtons">
       <div className="buttons">
@@ -74,7 +80,7 @@ function Board() {
         ))}
       </div>
       <p className="currentGuess">
-        {" "}
+
         {currentGuess} {} <br></br>
         SCORE: {currentScore}
       </p>
@@ -85,8 +91,7 @@ function Board() {
       <button onClick={() => makeGuess()}>GUESS</button>
       {prevGuess.map((p) => (
         <p className="currentGuess" key={p}>
-          {" "}
-          <li>{p}</li>{" "}
+          <li>{p}</li>
         </p>
       ))}
     </div>
