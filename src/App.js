@@ -71,13 +71,14 @@ function Board() {
   return (
     <div className="moreButtons">
       <div className="buttons">
-        {letters.map((l) => (
-          <Square
-            key={l}
-            value={l}
-            onSquareClick={() => setCurrentGuess(currentGuess + l)}
-          />
-        ))}
+          <div className="row1"> <Square  value={letters[0]} onSquareClick={() => setCurrentGuess(currentGuess + letters[0])}/> 
+          <Square  value={letters[1]} onSquareClick={() => setCurrentGuess(currentGuess + letters[1])}/>
+          <Square  value={letters[2]} onSquareClick={() => setCurrentGuess(currentGuess + letters[2])}/></div>
+          <div className="row2"> <Square  value={letters[3]} onSquareClick={() => setCurrentGuess(currentGuess + letters[3])}/></div>
+          <div className="row3"> <Square  value={letters[4]} onSquareClick={() => setCurrentGuess(currentGuess + letters[4])}/>
+           <Square  value={letters[5]} onSquareClick={() => setCurrentGuess(currentGuess + letters[5])}/>
+           <Square  value={letters[6]} onSquareClick={() => setCurrentGuess(currentGuess + letters[6])}/></div>
+  
       </div>
       <p className="currentGuess">
 
