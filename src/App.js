@@ -33,7 +33,7 @@ function Board() {
   const [currentGuess, setCurrentGuess] = useState(initialState);
   const [currentScore, setCurrentScore] = useState(0);
   const [letters, setRandomLetters] = useState(initialLetters);
-  const [prevGuess, setPrevGuess] = useState([]);
+  const [prevGuess] = useState([]);
 
   // deletes the last guess of the array currentGuess
   const deleteGuess = () => {
