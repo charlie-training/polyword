@@ -33,11 +33,12 @@ code {
   grid-auto-rows: minmax(10px, auto);
   grid-template-areas:
   "r1 r1 r1"
-  ". r2 ."
+  "r2 r2 r2"
   "r3 r3 r3";
 }
 
 .moreButtons > .buttons > .row1 {
+  padding-left: 70px;
   grid-area: r1;
 
 }
@@ -47,6 +48,7 @@ code {
 }
 
 .moreButtons > .buttons > .row3 {
+  padding-left: 70px;
   grid-area: r3;
 }
 
