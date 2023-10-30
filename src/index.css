@@ -86,13 +86,18 @@ code {
 .instructions {
   position: absolute;
   z-index: 10;
-  padding: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: #1b365d;
   border-color: #d0d3d4;
   border-width: 10px;
   border-style: solid;
+  border-radius: 25px;
   font-size: 24px;
   max-width: 500px;
+  white-space: pre-wrap;
 }
 
 .header > .Info {
