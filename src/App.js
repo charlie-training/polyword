@@ -67,7 +67,7 @@ function Board() {
   // here for readability on exactly what the pangram is and where it comes from
   const pangram = targetWord;
 
-  // this is a bit of a state (get it), but you can see the map function for letters and the buttons and their functions attached below
+  // this is a bit of a state (get it), but you can see the letters and the buttons and their functions attached below
   return (
     <div className="moreButtons">
       <div className="buttons">
