@@ -88,13 +88,15 @@ function Board() {
         {currentGuess} {} <br></br>
         SCORE: {currentScore}
       </p>
+      <div className="actionButtons">
       <button onClick={() => deleteGuess()}>DELETE</button>
-      <br></br>
+  
       <button onClick={() => randomLetters()}>RANDOMISE</button>
-      <br></br>
+
       <button onClick={() => makeGuess()}>GUESS</button>
+      </div>
       {prevGuess.map((p) => (
-        <p className="currentGuess" key={p}>
+        <p className="prevGuesses" key={p}>
           <li>{p}</li>
         </p>
       ))}
