@@ -16,7 +16,7 @@ code {
 }
 
 .row1 {
-  min-width: 100vw;
+  min-width: 97vw;
   border-top-style: solid;
   border-color: #d0d3d4;
   border-width: 10px;
@@ -65,13 +65,21 @@ code {
 }
 
 .prevGuesses {
-  font-size: 20px;
+  font-size: 25px;
   margin: 0px;
   list-style: none;
 }
 
 .currentGuess {
-  font-size: 25px;
+  font-size: 50px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  display: flexbox;
+}
+
+.currentScore {
+  font-size: 30px;
 }
 
 .header {
@@ -109,6 +117,7 @@ code {
 .actionButtons > button {
   margin: 5px;
   padding: 10px;
+  margin-bottom: 20px;
   font-size: 32px;
   border-radius: 20px;
 }

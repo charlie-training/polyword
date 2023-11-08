@@ -84,8 +84,9 @@ function Board() {
   
       </div>
       <p className="currentGuess">
-
-        {currentGuess} {} <br></br>
+        {currentGuess} <br></br>
+      </p>
+      <p className="currentScore"> 
         SCORE: {currentScore}
       </p>
       <div className="actionButtons">
