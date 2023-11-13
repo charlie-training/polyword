@@ -7,7 +7,7 @@ jest.mock('../wordgen.js', () => ({
   uniqueLetters : ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 }))
 
-test('renders learn react link', () => {
+test('renders all 3 action buttons', () => {
   render(<App />);
   const scoreBtn = screen.getByText(/SCORE/i);
   const guessBtn = screen.getByText(/GUESS/i);
