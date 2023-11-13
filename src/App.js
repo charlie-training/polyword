@@ -4,6 +4,7 @@ import { uniqueLetters, targetWord, validWords } from "./wordgen";
 import React from "react";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
 
 toast.configure()
 
@@ -35,6 +36,11 @@ function Board() {
   const [letters, setRandomLetters] = useState(initialLetters);
   const [prevGuess] = useState([]);
 
+  function addToScore(scoreAdd) {
+    setCookie("score", parseInt(getCookie("score")) + scoreAdd, 1);
+    setCurrentScore(currentScore + scoreAdd);
+  }
+
   // deletes the last guess of the array currentGuess
   const deleteGuess = () => {
     setCurrentGuess(currentGuess.slice(0, -1));
@@ -49,19 +55,22 @@ function Board() {
   const makeGuess = () => {
     // if it's in the valid list and not in the previous guesses
     if (currentGuess in validWords && !prevGuess.includes(currentGuess)) {
-      setCurrentScore(currentScore + validWords[currentGuess]);
+      addToScore(validWords[currentGuess]);
       prevGuess.push(currentGuess);
       toast.success( "Correct! +" + validWords[currentGuess] + " points" , {position:toast.POSITION.TOP_CENTER})
+      
       // pangram is the target word with all the unique letters in
     } else if (currentGuess == pangram) {
-      setCurrentScore(currentScore + 25);
+      addToScore(25);
       prevGuess.push(currentGuess);
       toast.success( "Pangram! +25 points" , {position:toast.POSITION.TOP_CENTER})
+
       // if it's not in the list at all
     } else if (!(currentGuess in validWords)) {
       toast.info("Not in word list" , {position : toast.POSITION.TOP_CENTER})
     }
-    setCurrentGuess(initialState);
+    setCurrentGuess(initialState)
+    setCookie("score", currentScore, 1)
   };
 
   // here for readability on exactly what the pangram is and where it comes from
