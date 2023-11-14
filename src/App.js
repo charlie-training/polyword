@@ -2,9 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import { uniqueLetters, targetWord, validWords } from "./wordgen";
 import React from "react";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
+import { storeScore, removeScore, clearAllScore, readScoreStorage } from "./utils/storageHandler";
 
 toast.configure()
 
@@ -37,8 +38,12 @@ function Board() {
   const [prevGuess] = useState([]);
 
   function addToScore(scoreAdd) {
-    setCookie("score", parseInt(getCookie("score")) + scoreAdd, 1);
+    if (readScoreStorage("test") === undefined) {
+      storeScore(0, "test")
+    } else {
+    storeScore(readScoreStorage("test") + scoreAdd, "test" );
     setCurrentScore(currentScore + scoreAdd);
+    }
   }
 
   // deletes the last guess of the array currentGuess
@@ -49,6 +54,7 @@ function Board() {
   // randomises the letters, defined here so it can be passed into the arrow function below
   const randomLetters = () => {
     setRandomLetters(randomiser([...letters]));
+    console.log(readScoreStorage("test"))
   };
 
   // contains the logic for a user's guess
@@ -57,17 +63,17 @@ function Board() {
     if (currentGuess in validWords && !prevGuess.includes(currentGuess)) {
       addToScore(validWords[currentGuess]);
       prevGuess.push(currentGuess);
-      toast.success( "Correct! +" + validWords[currentGuess] + " points" , {position:toast.POSITION.TOP_CENTER})
-      
+      toast.success("Correct! +" + validWords[currentGuess] + " points", { position: toast.POSITION.TOP_CENTER })
+
       // pangram is the target word with all the unique letters in
     } else if (currentGuess == pangram) {
       addToScore(25);
       prevGuess.push(currentGuess);
-      toast.success( "Pangram! +25 points" , {position:toast.POSITION.TOP_CENTER})
+      toast.success("Pangram! +25 points", { position: toast.POSITION.TOP_CENTER })
 
       // if it's not in the list at all
     } else if (!(currentGuess in validWords)) {
-      toast.info("Not in word list" , {position : toast.POSITION.TOP_CENTER})
+      toast.info("Not in word list", { position: toast.POSITION.TOP_CENTER })
     }
     setCurrentGuess(initialState)
     setCookie("score", currentScore, 1)
@@ -80,30 +86,30 @@ function Board() {
   return (
     <div className="moreButtons">
       <div className="buttons">
-          <div className="row1">
-          <Square  value={letters[0]} onSquareClick={() => setCurrentGuess(currentGuess + letters[0])}/> 
-          <Square  value={letters[1]} onSquareClick={() => setCurrentGuess(currentGuess + letters[1])}/> </div>
-          <div className="row2"> 
-          <Square  value={letters[2]} onSquareClick={() => setCurrentGuess(currentGuess + letters[2])}/>
-          <Square  value={letters[3]} onSquareClick={() => setCurrentGuess(currentGuess + letters[3])}/>
-          <Square  value={letters[4]} onSquareClick={() => setCurrentGuess(currentGuess + letters[4])}/> </div>
-          <div className="row3"> 
-          <Square  value={letters[5]} onSquareClick={() => setCurrentGuess(currentGuess + letters[5])}/>
-          <Square  value={letters[6]} onSquareClick={() => setCurrentGuess(currentGuess + letters[6])}/></div>
-  
+        <div className="row1">
+          <Square value={letters[0]} onSquareClick={() => setCurrentGuess(currentGuess + letters[0])} />
+          <Square value={letters[1]} onSquareClick={() => setCurrentGuess(currentGuess + letters[1])} /> </div>
+        <div className="row2">
+          <Square value={letters[2]} onSquareClick={() => setCurrentGuess(currentGuess + letters[2])} />
+          <Square value={letters[3]} onSquareClick={() => setCurrentGuess(currentGuess + letters[3])} />
+          <Square value={letters[4]} onSquareClick={() => setCurrentGuess(currentGuess + letters[4])} /> </div>
+        <div className="row3">
+          <Square value={letters[5]} onSquareClick={() => setCurrentGuess(currentGuess + letters[5])} />
+          <Square value={letters[6]} onSquareClick={() => setCurrentGuess(currentGuess + letters[6])} /></div>
+
       </div>
       <p className="currentGuess">
         {currentGuess} <br></br>
       </p>
-      <p className="currentScore"> 
+      <p className="currentScore">
         SCORE: {currentScore}
       </p>
       <div className="actionButtons">
-      <button onClick={() => deleteGuess()}>DELETE</button>
-  
-      <button onClick={() => randomLetters()}>RANDOMISE</button>
+        <button onClick={() => deleteGuess()}>DELETE</button>
 
-      <button onClick={() => makeGuess()}>GUESS</button>
+        <button onClick={() => randomLetters()}>RANDOMISE</button>
+
+        <button onClick={() => makeGuess()}>GUESS</button>
       </div>
       {prevGuess.map((p) => (
         <p className="prevGuesses" key={p}>
