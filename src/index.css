@@ -93,7 +93,7 @@ code {
   margin-right: 10px;
 }
 
-.instructions {
+.overlay {
   position: absolute;
   z-index: 10;
   padding-left: 50px;
@@ -110,7 +110,7 @@ code {
   white-space: pre-wrap;
 }
 
-.header > .Info {
+.header > button {
   background: local;
 }
 

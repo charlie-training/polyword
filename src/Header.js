@@ -3,8 +3,11 @@ import info from "./images/info-icon.png";
 import stats from "./images/stats-icon.png";
 import { useState } from "react";
 
+
 export default function Header() {
   const [showInstr, setShowInstr] = useState("none");
+  const [showStats, setShowStats] = useState("none");
+
   function instrFunction() {
     if (showInstr === "none") {
       setShowInstr("");
@@ -12,6 +15,15 @@ export default function Header() {
       setShowInstr("none");
     }
   }
+
+  function statFunction() {
+    if (showStats === "none") {
+      setShowStats("");
+    } else {
+      setShowStats("none");
+    }
+  }
+
   return (
     <div className="header">
       <button className="Info" onClick={() => instrFunction("")}>
@@ -24,19 +36,29 @@ export default function Header() {
         ></img>{" "}
       </button>
 
-      <a href="#">
+      <button className="Stats" onClick={() => statFunction()}>
         {" "}
-        <img src={stats} width={50} height={50} alt="User Score"></img>{" "}
-      </a>
+        <img
+          src={stats}
+          width={50}
+          height={50}
+          alt="Game Statistics"
+        ></img>{" "}
+      </button>
 
-      <div className="instructions" style={{ display: showInstr }}>
+      <div className="overlay" style={{ display: showInstr }}>
         <p>{text}</p>
+      </div>
+
+      <div className="overlay" style={{ display: showStats }}>
+        <p>{}</p>
       </div>
     </div>
   );
 }
 
-const text ='The objective of Polyword is to select the letters in order to make the longest words you can. \
+const text =
+  'The objective of Polyword is to select the letters in order to make the longest words you can. \
 There is one (and only one) word which is the "Pangram",\
 and is worth bonus points. Other words may qualify but are not the one used to generate the puzzle. \
 \n \nYou can reuse letters any amount of times, but you must include every letter at least once if you want to guess the Pangram\
