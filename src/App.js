@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import { uniqueLetters, targetWord, validWords } from "./wordgen";
+import { uniqueLetters, targetWord, validWords, gameID } from "./wordgen";
 import React from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
-import { storeScore, removeScore, clearAllScore, readScoreStorage } from "./utils/storageHandler";
+import { storeScore, removeScore, clearAllScore, readScoreStorage, gameIDCheck } from "./utils/storageHandler";
 
 toast.configure()
 
@@ -38,11 +38,11 @@ function Board() {
   const [prevGuess] = useState([]);
 
   function addToScore(scoreAdd) {
-    if (readScoreStorage("test") === undefined) {
-      storeScore(0, "test")
+    if (gameIDCheck(gameID) === null ) {
+      storeScore({ "1" : { "guesses" :[], "score" : 0} })
     } else {
-    storeScore(readScoreStorage("test") + scoreAdd, "test" );
     setCurrentScore(currentScore + scoreAdd);
+    storeScore({gameID : {"guesses" : currentGuess, "score" : currentScore}})
     }
   }
 
@@ -54,7 +54,6 @@ function Board() {
   // randomises the letters, defined here so it can be passed into the arrow function below
   const randomLetters = () => {
     setRandomLetters(randomiser([...letters]));
-    console.log(readScoreStorage("test"))
   };
 
   // contains the logic for a user's guess
