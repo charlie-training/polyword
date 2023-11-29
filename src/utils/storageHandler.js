@@ -14,7 +14,6 @@ export function readScoreStorage(gameID) {
   try {
     let scoreObj = window.localStorage.getItem(gameID);
     scoreObj = JSON.parse(scoreObj);
-    console.log(scoreObj)
     return scoreObj.score;
   } catch (error) {
     return 0

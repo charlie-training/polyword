@@ -61,7 +61,6 @@ function Board() {
     if (currentGuess in validWords && !prevGuess.includes(currentGuess)) {
       prevGuess.push(currentGuess);
       addToScore(validWords[currentGuess]);
-      console.log("score in makeGuess = " + validWords[currentGuess])
       toast.success("Correct! +" + validWords[currentGuess] + " points", { position: toast.POSITION.TOP_CENTER })
 
       // pangram is the target word with all the unique letters in
