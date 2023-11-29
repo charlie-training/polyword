@@ -4,10 +4,12 @@ import stats from "./images/stats-icon.png";
 import { useState } from "react";
 import { readScoreStorage, readGuessStorage, totalGamesPlayed, clearAllScore, bestScore } from "./utils/storageHandler"
 
+// the states below are read into the "display" CSS for each element
 export default function Header() {
   const [showInstr, setShowInstr] = useState("none");
   const [showStats, setShowStats] = useState("none");
 
+  // show/hide instructions
   function instrFunction() {
     if (showInstr === "none" && showStats === "none") {
       setShowInstr("");
@@ -16,6 +18,7 @@ export default function Header() {
     }
   }
 
+  // show/hide stats
   function statFunction() {
     if (showStats === "none" && showInstr === "none") {
       setShowStats("");
