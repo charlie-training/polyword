@@ -2,14 +2,14 @@ import React from "react";
 import info from "./images/info-icon.png";
 import stats from "./images/stats-icon.png";
 import { useState } from "react";
-import { readScoreStorage, readGuessStorage, totalGamesPlayed } from "./utils/storageHandler"
+import { readScoreStorage, readGuessStorage, totalGamesPlayed, clearAllScore, bestScore } from "./utils/storageHandler"
 
 export default function Header() {
   const [showInstr, setShowInstr] = useState("none");
   const [showStats, setShowStats] = useState("none");
 
   function instrFunction() {
-    if (showInstr === "none") {
+    if (showInstr === "none" && showStats === "none") {
       setShowInstr("");
     } else {
       setShowInstr("none");
@@ -17,7 +17,7 @@ export default function Header() {
   }
 
   function statFunction() {
-    if (showStats === "none") {
+    if (showStats === "none" && showInstr === "none") {
       setShowStats("");
     } else {
       setShowStats("none");
@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <button className="Info" onClick={() => instrFunction("")}>
+      <button className="Info" onClick={() => instrFunction()}>
         {" "}
         <img
           src={info}
@@ -47,13 +47,21 @@ export default function Header() {
       </button>
 
       <div className="overlay" style={{ display: showInstr }}>
-        <h1> Information </h1>
+        <button className="exitButton" onClick={() => instrFunction("")}>
+          <p> X </p>
+        </button>
+        <h1 style={{ marginTop: 0 }}> Information </h1>
         <p>{text}</p>
       </div>
 
       <div className="overlay" style={{ display: showStats }}>
-        <h1> Statistics </h1>
+        <button className="exitButton" onClick={() => statFunction("")}>
+          <p> X </p>
+        </button>
+        <h1 style={{ marginTop: 0 }}> Statistics </h1>
         <p>Total games played: {totalGamesPlayed()}</p>
+        <p>Best Score: {bestScore()}</p>
+        <button onClick={() => clearAllScore()}> Clear All Stats </button>
       </div>
     </div>
   );

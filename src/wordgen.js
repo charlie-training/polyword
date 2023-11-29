@@ -1,10 +1,9 @@
 import words from "./words.json"
-  // TODO
-  // 
+
 let dictMax = Object.keys(words).length
 
 function randomNum(max) {
-    return Math.floor(Math.random() * max)
+  return Math.floor(Math.random() * max)
 }
 
 const random_word_set = randomNum(dictMax)
@@ -17,7 +16,6 @@ export let validWords = {}
 valid.forEach(i => {
   validWords[i] = Math.floor(i.length ** 1.25)
 });
-
 
 let wordLetters = targetWord.split()[0]
 

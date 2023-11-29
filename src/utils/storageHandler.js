@@ -38,3 +38,13 @@ export function totalGamesPlayed() {
   let totalGames = window.localStorage.length
   return totalGames;
 }
+
+export function bestScore() {
+  let bestScore = 0
+  for (var i = 0; i < window.localStorage.length; i++) {
+    if (readScoreStorage(i) > bestScore) {
+      bestScore = readScoreStorage(i)
+    }
+  }
+  return bestScore
+}

@@ -10,6 +10,10 @@ body {
   color: #d0d3d4;
 }
 
+button {
+  cursor:pointer;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -122,11 +126,36 @@ a {
   border-radius: 25px;
   font-size: 24px;
   max-width: 400px;
+  min-width: 300px;
   white-space: pre-wrap;
 }
 
 .header > button {
   background: local;
+  border:none;
+}
+
+.exitButton {
+  background: local;
+  font-size: 32px;
+  padding:0px;
+  color:#d0d3d4;
+  height:40px;
+  width:40px;
+  position:sticky;
+  margin-left: 95%;
+  margin-top: 3%;
+  margin-bottom: -10px;
+  border:none;
+}
+
+.exitButton > p {
+  font-weight: 600;
+  position: absolute;
+  margin: 0;
+  left: 0;
+  right: 0;
+  top: 0
 }
 
 .actionButtons > button {

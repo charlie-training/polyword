@@ -5,7 +5,7 @@ import React from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
-import { storeScore, removeScore, clearAllScore, readScoreStorage, readGuessStorage } from "./utils/storageHandler";
+import { storeScore, readScoreStorage, readGuessStorage } from "./utils/storageHandler";
 
 toast.configure()
 const gameID = gameIndex
@@ -79,7 +79,6 @@ function Board() {
   // here for readability on exactly what the pangram is and where it comes from
   const pangram = targetWord;
   
-
   // this is a bit of a state (get it), but you can see the letters and the buttons and their functions attached below
   return (
     <div className="moreButtons">
