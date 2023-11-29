@@ -2,7 +2,7 @@ import React from "react";
 import info from "./images/info-icon.png";
 import stats from "./images/stats-icon.png";
 import { useState } from "react";
-
+import { readScoreStorage, readGuessStorage, totalGamesPlayed } from "./utils/storageHandler"
 
 export default function Header() {
   const [showInstr, setShowInstr] = useState("none");
@@ -47,11 +47,13 @@ export default function Header() {
       </button>
 
       <div className="overlay" style={{ display: showInstr }}>
+        <h1> Information </h1>
         <p>{text}</p>
       </div>
 
       <div className="overlay" style={{ display: showStats }}>
-        <p>{}</p>
+        <h1> Statistics </h1>
+        <p>Total games played: {totalGamesPlayed()}</p>
       </div>
     </div>
   );
