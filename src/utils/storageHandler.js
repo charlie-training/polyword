@@ -1,15 +1,41 @@
-export function storeScore(score, session) {
-    window.localStorage.setItem(session, score)
+export function storeScore(object) {
+  let objectValues = JSON.stringify(Object.values(object)[0])
+  window.localStorage.setItem(
+    Object.keys((object))[0],
+    objectValues
+  );
 }
 
 export function removeScore(session) {
-    window.localStorage.removeItem(session)
+  window.localStorage.removeItem(session);
 }
 
-export function readScoreStorage(session) {
-    return parseInt(window.localStorage.getItem(session))
+export function readScoreStorage(gameID) {
+  try {
+    let scoreObj = window.localStorage.getItem(gameID);
+    scoreObj = JSON.parse(scoreObj);
+    return scoreObj.score;
+  } catch (error) {
+    return 0
+  }
+}
+
+export function readGuessStorage(gameID) {
+  try {
+    let guessObj = window.localStorage.getItem(gameID);
+    guessObj = JSON.parse(guessObj);
+    return guessObj.guesses;
+  } catch (error) {
+    return []
+  }
 }
 
 export function clearAllScore() {
-    window.localStorage.clear()
+  window.localStorage.clear();
 }
+
+export function encodeScore(gameID, guesses, score) {
+  let storageObject = { gameID: { guesses: guesses, score: score } };
+  return storageObject;
+}
+

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-import { uniqueLetters, targetWord, validWords } from "./wordgen";
+import { uniqueLetters, targetWord, validWords, gameIndex } from "./wordgen";
 import React from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
-import { storeScore, removeScore, clearAllScore, readScoreStorage } from "./utils/storageHandler";
+// import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
+import { storeScore, removeScore, clearAllScore, readScoreStorage, readGuessStorage } from "./utils/storageHandler";
 
 toast.configure()
+const gameID = gameIndex
 
 // defines each Square rendered with a letter within
 function Square({ value, onSquareClick }) {
@@ -33,17 +34,15 @@ const initialLetters = randomiser([...uniqueLetters]);
 function Board() {
   const initialState = ""; // empty State of guesses, feels more readable this way idk
   const [currentGuess, setCurrentGuess] = useState(initialState);
-  const [currentScore, setCurrentScore] = useState(0);
+  const [currentScore, setCurrentScore] = useState(readScoreStorage(gameID));
   const [letters, setRandomLetters] = useState(initialLetters);
-  const [prevGuess] = useState([]);
+  const [prevGuess] = useState(readGuessStorage(gameID));
 
   function addToScore(scoreAdd) {
-    if (readScoreStorage("test") === undefined) {
-      storeScore(0, "test")
-    } else {
-    storeScore(readScoreStorage("test") + scoreAdd, "test" );
-    setCurrentScore(currentScore + scoreAdd);
-    }
+      setCurrentScore(scoreAdd + currentScore);
+      let storageObject = {}
+      storageObject[gameID] = { "guesses" : prevGuess, "score" : scoreAdd + currentScore}
+      storeScore(storageObject)
   }
 
   // deletes the last guess of the array currentGuess
@@ -54,15 +53,14 @@ function Board() {
   // randomises the letters, defined here so it can be passed into the arrow function below
   const randomLetters = () => {
     setRandomLetters(randomiser([...letters]));
-    console.log(readScoreStorage("test"))
   };
 
   // contains the logic for a user's guess
   const makeGuess = () => {
     // if it's in the valid list and not in the previous guesses
     if (currentGuess in validWords && !prevGuess.includes(currentGuess)) {
-      addToScore(validWords[currentGuess]);
       prevGuess.push(currentGuess);
+      addToScore(validWords[currentGuess]);
       toast.success("Correct! +" + validWords[currentGuess] + " points", { position: toast.POSITION.TOP_CENTER })
 
       // pangram is the target word with all the unique letters in
@@ -76,7 +74,6 @@ function Board() {
       toast.info("Not in word list", { position: toast.POSITION.TOP_CENTER })
     }
     setCurrentGuess(initialState)
-    setCookie("score", currentScore, 1)
   };
 
   // here for readability on exactly what the pangram is and where it comes from
