@@ -41,7 +41,7 @@ export function totalGamesPlayed() {
 
 export function bestScore() {
   let bestScore = 0
-  for (var i = 0; i < window.localStorage.length; i++) {
+  for (var i = 0; i <= window.localStorage.length; i++) {
     if (readScoreStorage(i) > bestScore) {
       bestScore = readScoreStorage(i)
     }
