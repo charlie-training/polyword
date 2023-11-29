@@ -25,4 +25,4 @@ const unique = a => [...new Set(a)]
 
 export const uniqueLetters = unique(wordLetters)
 
-export const gameID = 0
+export const gameIndex = 1

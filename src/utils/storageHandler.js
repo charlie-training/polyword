@@ -1,8 +1,8 @@
 export function storeScore(object) {
-  let parsedObject = JSON.stringify(object.gameID)
+  let objectValues = JSON.stringify(Object.values(object)[0])
   window.localStorage.setItem(
     Object.keys((object))[0],
-    parsedObject
+    objectValues
   );
 }
 
@@ -10,14 +10,25 @@ export function removeScore(session) {
   window.localStorage.removeItem(session);
 }
 
-export function gameIDCheck(gameID) {
-    return window.localStorage.getItem(gameID)
+export function readScoreStorage(gameID) {
+  try {
+    let scoreObj = window.localStorage.getItem(gameID);
+    scoreObj = JSON.parse(scoreObj);
+    console.log(scoreObj)
+    return scoreObj.score;
+  } catch (error) {
+    return 0
+  }
 }
 
-export function readScoreStorage(gameID) {
-  let scoreObj = window.localStorage.getItem(gameID);
-  scoreObj = JSON.parse(scoreObj);
-  return scoreObj.gameID.score;
+export function readGuessStorage(gameID) {
+  try {
+    let guessObj = window.localStorage.getItem(gameID);
+    guessObj = JSON.parse(guessObj);
+    return guessObj.guesses;
+  } catch (error) {
+    return []
+  }
 }
 
 export function clearAllScore() {
