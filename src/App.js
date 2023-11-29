@@ -4,8 +4,8 @@ import { uniqueLetters, targetWord, validWords, gameIndex } from "./wordgen";
 import React from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
-import { storeScore, removeScore, clearAllScore, readScoreStorage, gameIDCheck, readGuessStorage } from "./utils/storageHandler";
+// import { checkCookie, getCookie, setCookie } from "./utils/cookieHandler";
+import { storeScore, removeScore, clearAllScore, readScoreStorage, readGuessStorage } from "./utils/storageHandler";
 
 toast.configure()
 const gameID = gameIndex
@@ -74,7 +74,6 @@ function Board() {
       toast.info("Not in word list", { position: toast.POSITION.TOP_CENTER })
     }
     setCurrentGuess(initialState)
-    setCookie("score", currentScore, 1)
   };
 
   // here for readability on exactly what the pangram is and where it comes from
