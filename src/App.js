@@ -41,7 +41,7 @@ function Board() {
   function addToScore(scoreAdd) {
       setCurrentScore(scoreAdd + currentScore);
       let storageObject = {}
-      storageObject[gameID] = { "guesses" : prevGuess, "score" : scoreAdd + currentScore}
+      storageObject[gameID] = { "guesses" : prevGuess, "score" : scoreAdd + currentScore }
       storeScore(storageObject)
   }
 
@@ -65,8 +65,8 @@ function Board() {
 
       // pangram is the target word with all the unique letters in
     } else if (currentGuess == pangram) {
-      addToScore(25);
       prevGuess.push(currentGuess);
+      addToScore(25);
       toast.success("Pangram! +25 points", { position: toast.POSITION.TOP_CENTER })
 
       // if it's not in the list at all
@@ -78,6 +78,7 @@ function Board() {
 
   // here for readability on exactly what the pangram is and where it comes from
   const pangram = targetWord;
+  
 
   // this is a bit of a state (get it), but you can see the letters and the buttons and their functions attached below
   return (

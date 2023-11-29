@@ -26,3 +26,5 @@ const unique = a => [...new Set(a)]
 export const uniqueLetters = unique(wordLetters)
 
 export const gameIndex = 1
+
+console.log(targetWord)
