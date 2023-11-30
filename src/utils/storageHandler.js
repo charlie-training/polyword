@@ -34,8 +34,17 @@ export function clearAllScore() {
   window.localStorage.clear();
 }
 
-export function encodeScore(gameID, guesses, score) {
-  let storageObject = { gameID: { guesses: guesses, score: score } };
-  return storageObject;
+export function totalGamesPlayed() {
+  let totalGames = window.localStorage.length
+  return totalGames;
 }
 
+export function bestScore() {
+  let bestScore = 0
+  for (var i = 0; i <= window.localStorage.length; i++) {
+    if (readScoreStorage(i) > bestScore) {
+      bestScore = readScoreStorage(i)
+    }
+  }
+  return bestScore
+}
