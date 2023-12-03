@@ -16,7 +16,7 @@ const valid = words[targetWord]
 
 export let validWords = {}
 
-// assign an exponentially rising score to the word based in its length
+// assign an exponentially rising score to the word based on its length
 valid.forEach(i => {
   validWords[i] = Math.floor(i.length ** 1.25)
 });
@@ -29,6 +29,17 @@ const unique = a => [...new Set(a)]
 export const uniqueLetters = unique(wordLetters)
 
 export const gameIndex = 1
+
+// TODO: create the day index to choose the target word
+
+let wordOrder = []
+
+for (let i=0;i>dictMax;i++) {
+  console.log(i)
+  wordOrder.push(Object.keys(words)[randomNum(i)])
+}  
+
+console.log(dictMax)
 
 // debugging feature to show pangram
 console.log(targetWord)
