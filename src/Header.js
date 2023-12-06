@@ -2,7 +2,7 @@ import React from "react";
 import info from "./images/info-icon.png";
 import stats from "./images/stats-icon.png";
 import { useState } from "react";
-import { readScoreStorage, readGuessStorage, totalGamesPlayed, clearAllScore, bestScore } from "./utils/storageHandler"
+import {  totalGamesPlayed, clearAllScore, bestScore } from "./utils/storageHandler"
 
 // the states below are read into the "display" CSS for each element
 export default function Header() {
