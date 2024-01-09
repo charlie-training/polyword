@@ -3,11 +3,11 @@ import vettedWords from "../src/utils/vettedWords.json"
 import dateIndex from "./utils/dateParser"
 
 // save highest index of word dictionary
-let dictMax = Object.keys(words).length
+// let dictMax = Object.keys(words).length
 
-function randomNum(max) {
-  return Math.floor(Math.random() * max)
-}
+// function randomNum(max) {
+//   return Math.floor(Math.random() * max)
+// }
 
 // choose a random index from that dictionary
 // const random_word_set = randomNum(dictMax)
@@ -36,8 +36,6 @@ const unique = a => [...new Set(a)]
 export const uniqueLetters = unique(wordLetters)
 
 // TODO: create the day index to choose the target word
-
-
 
 // for (let i=0;i>dictMax;i++) {
 //   console.log(i)
