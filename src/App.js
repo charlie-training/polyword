@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import { uniqueLetters, targetWord, validWords, gameIndex } from "./wordgen";
+import { uniqueLetters, targetWord, validWords } from "./wordgen";
+import dateIndex from "./utils/dateParser"
 import React from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { storeScore, readScoreStorage, readGuessStorage } from "./utils/storageHandler";
 
 toast.configure()
-const gameID = gameIndex
+const gameID = dateIndex
 
 // defines each Square rendered with a letter within
 function Square({ value, onSquareClick }) {

@@ -1,4 +1,6 @@
 import words from "./words.json"
+import vettedWords from "../src/utils/vettedWords.json"
+import dateIndex from "./utils/dateParser"
 
 // save highest index of word dictionary
 let dictMax = Object.keys(words).length
@@ -8,10 +10,15 @@ function randomNum(max) {
 }
 
 // choose a random index from that dictionary
-const random_word_set = randomNum(dictMax)
+// const random_word_set = randomNum(dictMax)
 
 // pick the word at that index and access the list of valid words relating to it
-export const targetWord = (String(Object.keys(words)[random_word_set]))
+// export const atargetWord = (String(Object.keys(words)[gameIndex]))
+
+export const targetWord = vettedWords.vettedWords[dateIndex]
+
+console.log(targetWord)
+
 const valid = words[targetWord]
 
 export let validWords = {}
@@ -28,18 +35,14 @@ const unique = a => [...new Set(a)]
 // export unique, split out letters from target word
 export const uniqueLetters = unique(wordLetters)
 
-export const gameIndex = 1
-
 // TODO: create the day index to choose the target word
 
-let wordOrder = []
 
-for (let i=0;i>dictMax;i++) {
-  console.log(i)
-  wordOrder.push(Object.keys(words)[randomNum(i)])
-}  
 
-console.log(dictMax)
+// for (let i=0;i>dictMax;i++) {
+//   console.log(i)
+//   wordOrder.push(Object.keys(words)[randomNum(i)])
+// }  
 
 // debugging feature to show pangram
 console.log(targetWord)
