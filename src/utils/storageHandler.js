@@ -39,12 +39,25 @@ export function totalGamesPlayed() {
   return totalGames;
 }
 
+export function averageScore() {
+  let totalScore = 0
+  let noOfGames = 0
+  let gameIDs = Object.keys(localStorage)
+  gameIDs.forEach(game => {
+    noOfGames++;
+    totalScore = totalScore + readScoreStorage(game)
+  })
+  return Math.floor(totalScore/noOfGames)
+}
+
 export function bestScore() {
   let bestScore = 0
-  for (var i = 0; i <= window.localStorage.length; i++) {
-    if (readScoreStorage(i) > bestScore) {
-      bestScore = readScoreStorage(i)
+  let gameIDs = Object.keys(localStorage)
+  gameIDs.forEach(game => {
+    if (readScoreStorage(game) > bestScore) {
+      bestScore = readScoreStorage(game)
     }
-  }
+  });
   return bestScore
-}
+  }
+  

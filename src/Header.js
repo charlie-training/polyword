@@ -2,7 +2,7 @@ import React from "react";
 import info from "./images/info-icon.png";
 import stats from "./images/stats-icon.png";
 import { useState } from "react";
-import {  totalGamesPlayed, clearAllScore, bestScore } from "./utils/storageHandler"
+import {  totalGamesPlayed, clearAllScore, bestScore, averageScore } from "./utils/storageHandler"
 
 // the states below are read into the "display" CSS for each element
 export default function Header() {
@@ -64,6 +64,7 @@ export default function Header() {
         <h1 style={{ marginTop: 0 }}> Statistics </h1>
         <p>Total games played: {totalGamesPlayed()}</p>
         <p>Best Score: {bestScore()}</p>
+        <p>Average Score: {averageScore()}</p>
         <button onClick={() => clearAllScore()}> Clear All Stats </button>
       </div>
     </div>
