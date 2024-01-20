@@ -28,9 +28,9 @@ a {
 
 #footer {
   padding-top: 4px;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-top: 25px;
-  min-width: 97vw;
+  min-width: 93vw;
   border-top-style: solid;
   border-color: #d0d3d4;
   border-width: 10px;
@@ -38,11 +38,6 @@ a {
 }
 
 .row1 {
-  min-width: 97vw;
-  border-top-style: solid;
-  border-color: #d0d3d4;
-  border-width: 10px;
-  box-sizing: border-box;
   padding-top: 20px;
 }
 
@@ -56,10 +51,13 @@ a {
 
 .moreButtons {
   padding-left: 20px;
+  display:flexbox;
+  justify-self: center;
+  align-self: center;
 }
 
 .moreButtons > .buttons {
-  min-width: 100px;
+  min-width: 50px;
   display: grid;
   grid-template-columns: repeat(3, 150px);
   grid-auto-rows: minmax(1px, auto);
@@ -67,6 +65,7 @@ a {
     "r1 r1 r1"
     "r2 r2 r2"
     "r3 r3 r3";
+  justify-content: center;
 }
 
 .moreButtons > .buttons > .row1 {
@@ -105,6 +104,10 @@ a {
   padding-top: 20px;
   padding-bottom: 15px;
   padding-left: 10px;
+  border-bottom-style: solid;
+  border-color: #d0d3d4;
+  border-width: 10px;
+  box-sizing: border-box;
 }
 
 .header > button {
