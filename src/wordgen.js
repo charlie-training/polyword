@@ -1,5 +1,5 @@
 import words from "./words.json"
-import vettedWords from "../src/utils/vettedWords.json"
+import vettedWords from "./utils/vettedWords.json"
 import dateIndex from "./utils/dateParser"
 
 // save highest index of word dictionary
@@ -15,25 +15,26 @@ import dateIndex from "./utils/dateParser"
 // pick the word at that index and access the list of valid words relating to it
 // export const atargetWord = (String(Object.keys(words)[gameIndex]))
 
-export const targetWord = vettedWords.vettedWords[dateIndex]
+export const targetWord = vettedWords.vettedWords[dateIndex];
 
-console.log(targetWord)
+console.log(targetWord);
 
-const valid = words[targetWord]
+const valid = words[targetWord];
 
-export let validWords = {}
+export let validWords = {};
 
 // assign an exponentially rising score to the word based on its length
+
 valid.forEach(i => {
   validWords[i] = Math.floor(i.length ** 1.25)
 });
 
-let wordLetters = targetWord.split()[0]
+let wordLetters = targetWord.split()[0];
 
-const unique = a => [...new Set(a)]
+const unique = a => [...new Set(a)];
 
 // export unique, split out letters from target word
-export const uniqueLetters = unique(wordLetters)
+export const uniqueLetters = unique(wordLetters);
 
 // TODO: create the day index to choose the target word
 
@@ -43,4 +44,4 @@ export const uniqueLetters = unique(wordLetters)
 // }  
 
 // debugging feature to show pangram
-console.log(targetWord)
+console.log(targetWord);
