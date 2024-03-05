@@ -65,7 +65,7 @@ function Board() {
       toast.success("Correct! +" + validWords[currentGuess] + " points", { position: toast.POSITION.TOP_CENTER })
 
       // pangram is the target word with all the unique letters in
-    } else if (currentGuess == pangram) {
+    } else if (currentGuess.toString() === pangram.toString()) {
       prevGuess.push(currentGuess);
       addToScore(25);
       toast.success("Pangram! +25 points", { position: toast.POSITION.TOP_CENTER })
