@@ -2,8 +2,8 @@ body {
   position: relative;
   margin-left: 5px;
 
-  background-color: #1b365d;
-  color: #d0d3d4;
+  background-color: #6e9ee7;
+  color: #000000;
 }
 
 html * {
@@ -11,6 +11,12 @@ html * {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+}
+
+.root {
+  position: relative;
+  width: 100%
 }
 
 button {
@@ -23,43 +29,47 @@ code {
 }
 
 a {
-  color: #d0d3d4;
+  color: #000000;
 }
 
 #footer {
   padding-top: 4px;
   margin-left: 10px;
   margin-top: 25px;
-  min-width: 93vw;
+  min-width: 90vw;
   border-top-style: solid;
-  border-color: #d0d3d4;
+  border-color: #000000;
   border-width: 10px;
   box-sizing: border-box;
 }
 
-.row1 {
-  padding-top: 20px;
+.game {
+  display: flex;
 }
 
-.buttons > div > button {
-  width: 120px;
-  height: 90px;
+.buttons>div>button {
+  width: 6rem;
+  height: 6rem;
   margin: 5px;
   font-size: 70px;
   border-radius: 30px;
+  background-color: #ffffff;
 }
 
 .moreButtons {
-  padding-left: 20px;
-  display:flexbox;
+  display: flex;
+  align-content: center;
   justify-self: center;
   align-self: center;
+  flex-direction: column;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
-.moreButtons > .buttons {
-  min-width: 50px;
+.moreButtons>.buttons {
+  min-width: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 150px);
+  grid-template-columns: repeat(3, 7rem);
   grid-auto-rows: minmax(1px, auto);
   grid-template-areas:
     "r1 r1 r1"
@@ -68,17 +78,18 @@ a {
   justify-content: center;
 }
 
-.moreButtons > .buttons > .row1 {
-  padding-left: 70px;
+.moreButtons>.buttons>.row1 {
+  padding-top: 20px;
+  padding-left: 60px;
   grid-area: r1;
 }
 
-.moreButtons > .buttons > .row2 {
+.moreButtons>.buttons>.row2 {
   grid-area: r2;
 }
 
-.moreButtons > .buttons > .row3 {
-  padding-left: 70px;
+.moreButtons>.buttons>.row3 {
+  padding-left: 60px;
   grid-area: r3;
 }
 
@@ -86,6 +97,7 @@ a {
   font-size: 25px;
   margin: 0px;
   list-style: none;
+  padding-left: 10px;
 }
 
 .currentGuess {
@@ -93,11 +105,13 @@ a {
   font-weight: 600;
   margin-top: 20px;
   margin-bottom: 5px;
-  display: flexbox;
+  display: flex;
 }
 
 .currentScore {
+  display: flex;
   font-size: 30px;
+  padding-left: 10px;
 }
 
 .header {
@@ -105,12 +119,12 @@ a {
   padding-bottom: 15px;
   padding-left: 10px;
   border-bottom-style: solid;
-  border-color: #d0d3d4;
+  border-color: #000000;
   border-width: 10px;
   box-sizing: border-box;
 }
 
-.header > button {
+.header>button {
   margin-right: 10px;
 }
 
@@ -121,27 +135,28 @@ a {
   padding-right: 50px;
   padding-top: 15px;
   padding-bottom: 55px;
-  background-color: #081220;
-  border-color: #d0d3d4;
+  background-color: #94b3e0;
+  border-color: #000000;
   border-width: 10px;
   border-style: solid;
   border-radius: 25px;
   font-size: 24px;
   max-width: 400px;
-  min-width: 300px;
+  min-width: 6rem;
   white-space: pre-wrap;
 }
 
-.header > button {
+.header>button {
   background: local;
   border: none;
 }
 
 .exitButton {
+  display: flex;
   background: local;
   font-size: 32px;
   padding: 0px;
-  color: #d0d3d4;
+  color: #000000;
   height: 40px;
   width: 40px;
   position: sticky;
@@ -151,7 +166,7 @@ a {
   border: none;
 }
 
-.exitButton > p {
+.exitButton>p {
   font-weight: 600;
   position: absolute;
   margin: 0;
@@ -160,7 +175,7 @@ a {
   top: 0;
 }
 
-.actionButtons > button {
+.actionButtons>button {
   margin: 5px;
   padding: 10px;
   margin-bottom: 20px;
