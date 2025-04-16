@@ -40,10 +40,10 @@ function Board() {
   const [prevGuess] = useState(readGuessStorage(gameID));
 
   function addToScore(scoreAdd) {
-      setCurrentScore(scoreAdd + currentScore);
-      let storageObject = {}
-      storageObject[gameID] = { "guesses" : prevGuess, "score" : scoreAdd + currentScore }
-      storeScore(storageObject)
+    setCurrentScore(scoreAdd + currentScore);
+    let storageObject = {}
+    storageObject[gameID] = { "guesses": prevGuess, "score": scoreAdd + currentScore }
+    storeScore(storageObject)
   }
 
   // deletes the last guess of the array currentGuess
@@ -79,7 +79,7 @@ function Board() {
 
   // here for readability on exactly what the pangram is and where it comes from
   const pangram = targetWord;
-  
+
   // this is a bit of a state (get it), but you can see the letters and the buttons and their functions attached below
   return (
     <div className="moreButtons">
@@ -110,7 +110,7 @@ function Board() {
         <button onClick={() => makeGuess()}>GUESS</button>
       </div>
       {prevGuess.map((p) => (
-        <p className="prevGuesses" key={p}>
+        <p className="prevGuesses" key={p} style={p.toString() === pangram ? { fontWeight: "bold" } : {}}>
           <li>{p}</li>
         </p>
       ))}

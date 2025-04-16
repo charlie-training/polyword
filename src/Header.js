@@ -2,7 +2,7 @@ import React from "react";
 import info from "./images/info-icon.png";
 import stats from "./images/stats-icon.png";
 import { useState } from "react";
-import {  totalGamesPlayed, clearAllScore, bestScore, averageScore } from "./utils/storageHandler"
+import { totalGamesPlayed, clearAllScore, bestScore, averageScore } from "./utils/storageHandler"
 
 // the states below are read into the "display" CSS for each element
 export default function Header() {
@@ -33,8 +33,8 @@ export default function Header() {
         {" "}
         <img
           src={info}
-          width={50}
-          height={50}
+          width={32}
+          height={32}
           alt="Instructions and Information"
         ></img>{" "}
       </button>
@@ -43,8 +43,8 @@ export default function Header() {
         {" "}
         <img
           src={stats}
-          width={50}
-          height={50}
+          width={32}
+          height={32}
           alt="Game Statistics"
         ></img>{" "}
       </button>
@@ -53,7 +53,7 @@ export default function Header() {
         <button className="exitButton" onClick={() => instrFunction("")}>
           <p> X </p>
         </button>
-        <h1 style={{ marginTop: 0 }}> Information </h1>
+        <h1 style={{ marginTop: 0 }}>Information </h1>
         <p>{text}</p>
       </div>
 
@@ -61,11 +61,11 @@ export default function Header() {
         <button className="exitButton" onClick={() => statFunction("")}>
           <p> X </p>
         </button>
-        <h1 style={{ marginTop: 0 }}> Statistics </h1>
+        <h1 style={{ marginTop: 0 }}>Statistics </h1>
         <p>Total games played: {totalGamesPlayed()}</p>
         <p>Best Score: {bestScore()}</p>
         <p>Average Score: {averageScore()}</p>
-        <button onClick={() => clearAllScore()}> Clear All Stats </button>
+        <button className="clearStatsButton" onClick={() => clearAllScore()}> Clear All Stats </button>
       </div>
     </div>
   );

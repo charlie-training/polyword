@@ -1,9 +1,12 @@
-body {
-  position: relative;
-  margin-left: 5px;
+:root {
+  --bg: #155293;
+  --fg: #ffffff;
+}
 
-  background-color: #6e9ee7;
-  color: #000000;
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  margin: 0;
 }
 
 html * {
@@ -29,19 +32,20 @@ code {
 }
 
 a {
-  color: #000000;
+  color: var(--fg);
 }
 
 #footer {
   padding-top: 4px;
-  margin-left: 10px;
   margin-top: 25px;
   min-width: 90vw;
   border-top-style: solid;
-  border-color: #000000;
+  border-color: #ffffff;
   border-width: 10px;
   box-sizing: border-box;
 }
+
+
 
 .game {
   display: flex;
@@ -54,6 +58,10 @@ a {
   font-size: 70px;
   border-radius: 30px;
   background-color: #ffffff;
+}
+
+.buttons>div>button:hover {
+  background-color: #ffffffb0;
 }
 
 .moreButtons {
@@ -80,7 +88,7 @@ a {
 
 .moreButtons>.buttons>.row1 {
   padding-top: 20px;
-  padding-left: 60px;
+  padding-left: 55px;
   grid-area: r1;
 }
 
@@ -89,7 +97,7 @@ a {
 }
 
 .moreButtons>.buttons>.row3 {
-  padding-left: 60px;
+  padding-left: 55px;
   grid-area: r3;
 }
 
@@ -118,10 +126,12 @@ a {
   padding-top: 20px;
   padding-bottom: 15px;
   padding-left: 10px;
-  border-bottom-style: solid;
-  border-color: #000000;
-  border-width: 10px;
+  /* border-bottom-style: solid;
+  border-color: #ffffff;
+  border-width: 10px; */
   box-sizing: border-box;
+
+  background-color: #4695e9;
 }
 
 .header>button {
@@ -135,8 +145,8 @@ a {
   padding-right: 50px;
   padding-top: 15px;
   padding-bottom: 55px;
-  background-color: #94b3e0;
-  border-color: #000000;
+  background-color: #4695e9;
+  border-color: #ffffff;
   border-width: 10px;
   border-style: solid;
   border-radius: 25px;
@@ -144,6 +154,15 @@ a {
   max-width: 400px;
   min-width: 6rem;
   white-space: pre-wrap;
+}
+
+.clearStatsButton {
+  margin: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 32px;
+  border-radius: 20px;
+  background-color: #ffffff;
 }
 
 .header>button {
@@ -181,4 +200,9 @@ a {
   margin-bottom: 20px;
   font-size: 32px;
   border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.actionButtons>button:hover {
+  background-color: #ffffff9c;
 }
