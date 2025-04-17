@@ -8,6 +8,9 @@ import { totalGamesPlayed, clearAllScore, bestScore, averageScore } from "./util
 export default function Header() {
   const [showInstr, setShowInstr] = useState("none");
   const [showStats, setShowStats] = useState("none");
+  const [time, setTime] = useState("")
+
+  setInterval(() => { setTime(new Date((new Date().setHours(24, 0, 0, 0) - Date.now())).toLocaleTimeString()) }, 1000)
 
   // show/hide instructions
   function instrFunction() {
@@ -28,32 +31,34 @@ export default function Header() {
   }
 
   return (
-    <div className="header">
-      <button className="Info" onClick={() => instrFunction()}>
-        {" "}
-        <img
-          src={info}
-          width={32}
-          height={32}
-          alt="Instructions and Information"
-        ></img>{" "}
-      </button>
+    <>
+      <div className="header" >
+        <button className="Info" onClick={() => instrFunction()}>
+          {" "}
+          <img
+            src={info}
+            width={32}
+            height={32}
+            alt="Instructions and Information"
+          ></img>{" "}
+        </button>
 
-      <button className="Stats" onClick={() => statFunction()}>
-        {" "}
-        <img
-          src={stats}
-          width={32}
-          height={32}
-          alt="Game Statistics"
-        ></img>{" "}
-      </button>
+        <button className="Stats" onClick={() => statFunction()}>
+          {" "}
+          <img
+            src={stats}
+            width={32}
+            height={32}
+            alt="Game Statistics"
+          ></img>{" "}
+        </button>
+        <p>Polyword</p>
+      </div>
 
       <div className="overlay" style={{ display: showInstr }}>
         <button className="exitButton" onClick={() => instrFunction("")}>
-          <p> X </p>
-        </button>
-        <h1 style={{ marginTop: 0 }}>Information </h1>
+          X        </button>
+        <h1 style={{ marginTop: 0 }}>How to Play </h1>
         <p>{text}</p>
       </div>
 
@@ -65,9 +70,10 @@ export default function Header() {
         <p>Total games played: {totalGamesPlayed()}</p>
         <p>Best Score: {bestScore()}</p>
         <p>Average Score: {averageScore()}</p>
+        <span>New word in: {time} </span>
         <button className="clearStatsButton" onClick={() => clearAllScore()}> Clear All Stats </button>
       </div>
-    </div>
+    </>
   );
 }
 
