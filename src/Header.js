@@ -56,22 +56,27 @@ export default function Header() {
       </div>
 
       <div className="overlay" style={{ display: showInstr }}>
-        <button className="exitButton" onClick={() => instrFunction("")}>
-          X        </button>
-        <h1 style={{ marginTop: 0 }}>How to Play </h1>
-        <p>{text}</p>
+        <div>
+          <button className="exitButton" onClick={() => instrFunction("")}>
+            X        </button>
+          <h1 style={{ marginTop: 0 }}>How to Play </h1>
+          <p>{text}</p>
+        </div>
       </div>
 
       <div className="overlay" style={{ display: showStats }}>
-        <button className="exitButton" onClick={() => statFunction("")}>
-          <p> X </p>
-        </button>
-        <h1 style={{ marginTop: 0 }}>Statistics </h1>
-        <p>Total games played: {totalGamesPlayed()}</p>
-        <p>Best Score: {bestScore()}</p>
-        <p>Average Score: {averageScore()}</p>
-        <span>New word in: {time} </span>
+        <div>
+          <button className="exitButton" onClick={() => statFunction("")}>
+            <p> X </p>
+          </button>
+          <h1 style={{ marginTop: 0 }}>Statistics </h1>
+          <p>Total games played: {totalGamesPlayed()}</p>
+          <p>Best Score: {bestScore()}</p>
+          <p>Average Score: {averageScore()}</p>
+          <span>New word in: {time} </span>
+        </div>
         <button className="clearStatsButton" onClick={() => clearAllScore()}> Clear All Stats </button>
+
       </div>
     </>
   );

@@ -43,11 +43,14 @@ export function averageScore() {
   let totalScore = 0
   let noOfGames = 0
   let gameIDs = Object.keys(localStorage)
+  if (gameIDs.length === 0) {
+    return 0
+  }
   gameIDs.forEach(game => {
     noOfGames++;
     totalScore = totalScore + readScoreStorage(game)
   })
-  return Math.floor(totalScore/noOfGames)
+  return Math.floor(totalScore / noOfGames)
 }
 
 export function bestScore() {
@@ -59,5 +62,5 @@ export function bestScore() {
     }
   });
   return bestScore
-  }
-  
+}
+

@@ -153,6 +153,7 @@ a {
 
 .overlay {
   position: absolute;
+  max-width: 800px;
   z-index: 10;
   padding-left: 50px;
   padding-right: 50px;
@@ -164,8 +165,9 @@ a {
   border-style: solid;
   border-radius: 25px;
   font-size: 24px;
-  width: auto;
   white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
 }
 
 .clearStatsButton {
@@ -175,6 +177,9 @@ a {
   font-size: 32px;
   border-radius: 20px;
   background-color: #ffffff;
+  max-width: 250;
+
+
 }
 
 
