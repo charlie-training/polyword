@@ -1,6 +1,7 @@
 :root {
   --bg: #155293;
   --fg: #ffffff;
+  --bg2: #4695e9;
 }
 
 body {
@@ -39,10 +40,11 @@ a {
   padding-top: 4px;
   margin-top: 25px;
   min-width: 90vw;
-  border-top-style: solid;
-  border-color: #ffffff;
-  border-width: 10px;
-  box-sizing: border-box;
+  background-color: var(--bg2);
+}
+
+#footer>a {
+  color: black;
 }
 
 
@@ -72,6 +74,7 @@ a {
   flex-direction: column;
   width: 100vw;
   overflow-x: hidden;
+  background-color: var(--bg);
 }
 
 .moreButtons>.buttons {
